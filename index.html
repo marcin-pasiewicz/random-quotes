@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random quote</title>
+<style>
+	body {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20%;
+}
+
+#dataField {
+  border: none;
+  resize: none;
+  text-align: justify;
+  outline: none;
+}
+
+.myButton {
+  display: block;
+  background: none;
+  border: none;
+  outline: none;
+  float: right;
+      }
+.myButton:hover {
+  font-weight: bold;
+  font-size: 14px;
+ 
+}
+
+#tweet-quote {
+ float: left;
+  }
+#tweet-quote:visited {
+ color: black;
+  }
+</style>
+
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+<body>
+<textarea placeholder="Click for quote ..." id="dataField" cols="80" rows="5"></textarea>
+<button class="myButton" id="get-data">get quote</button>
+<a id="tweet-quote" title="Tweet this quote!" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+</body>
+<script>
+	$(function() {
+    $('#get-data').click(function() {
+        $.get('lib/people.json', function(data, status, xhr) {
+       $('#dataField').text(JSON.stringify(data));
+        });
+        $.ajax({
+            url: 'http://quotes.stormconsultancy.co.uk/random.json',
+            method: 'get',
+            dataType: 'json',
+            success: function(data) {
+                $('#dataField').text(data.quote);
+            
+            
+$('#tweet-quote').attr('href', 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text='+data.quote);
+                     
+            }
+        });
+    });
+});
+</script>
+</html>
