@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Random quote</title>
+    <script src="https://use.fontawesome.com/1e4bfb465e.js"></script>
 <style>
 	body {
   max-width: 600px;
@@ -17,14 +18,16 @@
   outline: none;
 }
 
-.myButton {
+
+
+#get-data {
   display: block;
   background: none;
   border: none;
   outline: none;
   float: right;
       }
-.myButton:hover {
+#get-data:hover {
   font-weight: bold;
   font-size: 14px;
  
@@ -45,7 +48,7 @@
   crossorigin="anonymous"></script>
 <body>
 <textarea placeholder="Click for quote ..." id="dataField" cols="80" rows="5"></textarea>
-<button class="myButton" id="get-data">get quote</button>
+<button id="get-data">get quote</button>
 <a id="tweet-quote" title="Tweet this quote!" target="_blank">
       <i class="fa fa-twitter"></i>
     </a>
